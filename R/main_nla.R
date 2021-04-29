@@ -27,7 +27,7 @@ nla_coords=nla_coords[!is.na(nla_coords$latitude),]
 
 xy <- nla_coords[,c("longitude","latitude")]
 
-stations=rownames(nla_coords)
+stations=nla_coords$station
 
 #read function
 source("R/extract_ouranos.R")
@@ -46,4 +46,4 @@ output=extract_ouranos(dir="data/temp/",
                        stations=stations,
                        lat_long=xy)    
 
-write.csv(output,"data/output_nla.csv")
+write.csv(output,"data/output_nla.csv",row.names = F)
